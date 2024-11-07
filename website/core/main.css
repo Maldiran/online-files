@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--color-1);
+    color: var(--color-4);
+    font-family: monospace;
+    font-size: 12px;
+    overflow-anchor: none;
+    overflow-x: hidden;
+}
+header {
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    width: 100%;
+    min-height: 60px;
+    border-bottom-width: 2px;
+    border-bottom-color: var(--color-4);
+    border-bottom-style: solid;
+}
+#back {
+    width: 40px;
+    height: 40px;
+    margin: 10px 15px;
+    float: left;
+}
+#path {
+    line-height: 60px;
+    font-size: 20px;
+}
+#copyIndicator {
+    position: absolute;
+    display: none;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 15px;
+}
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 5px;
+    overflow-anchor: none;
+}
+.file {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: inherit;
+    user-select: none;
+}
+.fileselected {
+    background-color: var(--color-2);
+}
+.file > .image {
+    max-height: var(--thumbnail-height);
+    width: var(--thumbnail-width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.file > .description {
+    text-align: center;
+    padding: 2px;
+}
+.file > .image > img {
+    max-height: var(--thumbnail-height);
+    max-width: var(--thumbnail-width);
+    pointer-events: none;
+}
+.file > .image > .icon, .file > .image > .directory {
+    height: var(--thumbnail-height);
+    width: var(--thumbnail-width);
+}
+#loading {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 30px;
+}
+.context-menu {
+    z-index: 1;
+    position: absolute;
+    text-align: left;
+    background: var(--color-2);
+    border: 1px solid var(--color-4);
+}
+.context-menu ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    min-width: 120px;
+}
+.context-menu ul li {
+    border: 1px solid var(--color-4);
+}
+.context-menu ul li .action {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 3px 10px;
+    font-family: inherit;
+    color: var(--color-4);
+}
+.context-menu ul li:hover {
+    background: var(--color-3);
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--transparent-1);
+    color: var(--color-5);
+    z-index: 2;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#overlay #close {
+    position: fixed;
+    top: 2vw;
+    left: 2vw;
+    width: 6vw;
+    height: 6vw;
+    z-index: 3;
+}
+#overlay #back-file {
+    position: fixed;
+    top: 47vh;
+    left: 1vh;
+    width: 4vh;
+    height: 4vh;
+    z-index: 3;
+}
+#overlay #forward-file {
+    position: fixed;
+    top: 47vh;
+    right: 1vh;
+    width: 4vh;
+    height: 4vh;
+    z-index: 3;
+}
+#overlay #display {
+    display: flex;
+    margin: 10% auto;
+    height: 80%;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+#overlay #display .source {
+    max-width: 100%;
+    max-height: 100%;
+}
+#overlay #display iframe {
+    background-color: var(--color-1);
+    min-width: 100%;
+    min-height: 100%;
+}
+@media (prefers-color-scheme: dark) {
+    #overlay #display iframe {
+        background-color: var(--color-4);
+    }
+}
+#alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    background-color: var(--transparent-1);
+}
+#alert #content {
+    margin: 100px auto;
+    width: 280px;
+    background-color: var(--color-1);
+    border-color: var(--color-4);
+    border-style: solid;
+    border-width: 2px;
+    padding: 10px;
+}
+#alert #content #content-text {
+    width: 100%;
+    text-align: center;
+}
+#alert #content #content-text table {
+    text-align: left;
+}
+#alert #content #content-text input {
+    box-sizing: border-box;
+    width: inherit;
+}
+#alert #content #content-text input[type="file"] {
+    text-align: center;
+    font: inherit;
+    width: 250px;
+    margin: 10px 15px 0 15px;
+}
+#alert #content #content-text .margin {
+    width: 100%;
+    height: 10px;
+}
+#alert #content #content-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 46px;
+}
+#alert #content #content-buttons button, #alert #content #content-text input[type="file"]::file-selector-button {
+    width: 100px;
+    font: inherit;
+    border-color: var(--color-4);
+    border-style: solid;
+    border-width: 2px;
+}
+#selection-box {
+    position: absolute;
+    border: 2px dashed var(--color-4);
+    background-color: var(--transparent-2);
+    display: none;
+    pointer-events: none;
+}
