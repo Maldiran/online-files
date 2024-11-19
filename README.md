@@ -1,10 +1,4 @@
 # Online file explorer
-#### Demo at https://files.maldiran.com
-Demo account has limited privileges (read only) and its credentials are:
-- username: demo
-- password: demo
-
-------------
 
 This website is designed for linux servers, running it on windows will require changes in code.
 
